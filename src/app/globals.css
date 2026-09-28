@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+@layer base {
+  html {
+    @apply antialiased;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-ink-950 font-sans text-zinc-100;
+  }
+
+  ::selection {
+    background: rgba(226, 255, 61, 0.3);
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-acid ring-offset-2 ring-offset-ink-950;
+  }
+
+  img {
+    @apply max-w-full;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .section {
+    @apply py-16 sm:py-20;
+  }
+
+  .eyebrow {
+    @apply mb-3 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-acid;
+  }
+
+  .h-section {
+    @apply text-3xl font-extrabold tracking-tight text-white sm:text-4xl;
+  }
+
+  .text-muted {
+    @apply text-sm leading-relaxed text-zinc-400;
+  }
+
+  .card {
+    @apply rounded-2xl border border-white/10 bg-white/[0.03];
+  }
+
+  .card-hover {
+    @apply transition duration-200 hover:border-acid/40 hover:bg-white/[0.05];
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold transition disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  .btn-primary {
+    @apply btn bg-acid text-ink-950 hover:brightness-110 hover:shadow-glow;
+  }
+
+  .btn-secondary {
+    @apply btn border border-white/15 bg-white/5 text-white hover:border-white/30 hover:bg-white/10;
+  }
+
+  .btn-ghost {
+    @apply btn text-zinc-300 hover:bg-white/5 hover:text-white;
+  }
+
+  .btn-danger {
+    @apply btn bg-flame/15 text-flame hover:bg-flame/25;
+  }
+
+  .btn-sm {
+    @apply px-3.5 py-1.5 text-xs;
+  }
+
+  .input {
+    @apply w-full rounded-xl border border-white/10 bg-ink-850 px-4 py-2.5 text-sm text-white placeholder-zinc-500 transition focus:border-acid/60 focus:ring-1 focus:ring-acid/40;
+  }
+
+  .label {
+    @apply mb-1.5 block text-sm font-medium text-zinc-300;
+  }
+
+  .field-error {
+    @apply mt-1 text-xs text-flame;
+  }
+
+  .badge {
+    @apply inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-zinc-300;
+  }
+
+  .badge-acid {
+    @apply badge border-acid/30 bg-acid/10 text-acid;
+  }
+
+  .hero-glow {
+    background:
+      radial-gradient(60% 50% at 20% 10%, rgba(168, 85, 247, 0.18), transparent 60%),
+      radial-gradient(50% 40% at 85% 20%, rgba(56, 189, 248, 0.14), transparent 60%),
+      radial-gradient(40% 35% at 50% 90%, rgba(226, 255, 61, 0.1), transparent 60%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
