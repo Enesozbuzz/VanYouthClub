@@ -50,3 +50,13 @@ temp/
 *.key
 *.pfx
 secrets/
+
+# Local dev PostgreSQL (embedded, sandbox/dev helper)
+.pg-dev/
+.pgdata/
+
+# Uploaded media (runtime files, not source)
+public/uploads/
+
+# TypeScript build info
+*.tsbuildinfo
