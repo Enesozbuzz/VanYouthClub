@@ -23,7 +23,7 @@ export const DEFAULT_SETTINGS: SiteSettings = {
     "Van'daki gençleri sosyal, kültürel, sportif ve topluluk etkinliklerinde buluşturan platform.",
   instagram_url: "https://www.instagram.com/vanyouthclub/",
   phone_1: "0536 426 19 30",
-  phone_2: "0544 167 00 96",
+  phone_2: "",
 };
 
 export async function getSettings(): Promise<SiteSettings> {

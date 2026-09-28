@@ -79,17 +79,8 @@ export function SiteFooter({ settings }: { settings: SiteSettings }) {
               href={phoneToWhatsApp(settings.phone_1)}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-secondary btn-sm"
-            >
-              WhatsApp&apos;tan Yaz (1. numara)
-            </a>
-            <a
-              href={phoneToWhatsApp(settings.phone_2)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-secondary btn-sm"
-            >
-              WhatsApp (2. numara)
+              className="btn-secondary btn-sm">
+              WhatsApp&apos;tan Yaz
             </a>
           </div>
         </div>
