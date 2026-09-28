@@ -1,8 +1,17 @@
 # VanYouthClub — Database Change Plan
 
-> Status: **DOCUMENTATION ONLY**
-> Schema / migration / ORM implementation: **BLOCKED — pending backend & ORM decision**
-> Last updated: 2026-09-28
+> **STATUS: IMPLEMENTED (Faz 1)** — 2026-09-28
+> PostgreSQL şeması, migration'lar ve seed verisi uygulanmıştır.
+>
+> **Teknoloji notu (adaptasyon):** Planlama aşamasında Prisma önerilmişti;
+> ancak geliştirme ortamında `binaries.prisma.sh` (Prisma motor indirme adresi)
+> ağ tarafından engellendiği için native binary indirmeye ihtiyaç duymayan,
+> npm üzerinden çalışan **Drizzle ORM + drizzle-kit** kullanılmıştır.
+> Tablo tasarımı, kolonlar, index'ler, FK davranışları ve constraint'ler
+> plandaki tasarımla birebir aynıdır. Veritabanı kararı (PostgreSQL)
+> değişmemiştir; yalnızca data-access teknolojisi adapte edilmiştir.
+>
+> Şema: `src/lib/db/schema.ts` · Migration'lar: `drizzle/`
 
 Bu doküman, VanYouthClub'a veritabanı eklenmeden önce hazırlanan resmi plandır
 (`docs/PROJECT.md` §8 "Database Rule" gereğidir). Aşağıdaki kararlar kullanıcı
@@ -10,11 +19,11 @@ onayıyla sabitlenmiştir:
 
 | Karar | Değer | Durum |
 |---|---|---|
-| Database teknolojisi | PostgreSQL 16+ | ✅ Onaylandı |
-| ORM / data-access | Prisma **veya** EF Core | ⏳ Backend stack kararına bağlı — ertelendi |
-| Backend stack | Next.js (öneri) / .NET / diğer | ⏳ Ertelendi |
-| Auth modeli | Sunucu tarafı oturum (httpOnly cookie) | ✅ Onaylandı |
-| Kategori yapısı | `categories` tablosu | ✅ Onaylandı |
+| Database teknolojisi | PostgreSQL 16+ | ✅ Onaylandı & uygulandı |
+| ORM / data-access | Drizzle ORM + drizzle-kit | ✅ Uygulandı (ağ kısıtı nedeniyle Prisma yerine) |
+| Backend stack | Next.js 15 (App Router) + TypeScript | ✅ Uygulandı |
+| Auth modeli | Sunucu tarafı oturum (httpOnly cookie) | ✅ Onaylandı & uygulandı |
+| Kategori yapısı | `categories` tablosu | ✅ Onaylandı & uygulandı |
 
 ---
 
@@ -339,6 +348,9 @@ Rollback:
 4. Build/test/güvenlik kontrolü ve rapor
 
 ```
-IMPLEMENTATION STATUS: DOCUMENTATION ONLY
-SCHEMA / MIGRATION / ORM IMPLEMENTATION: BLOCKED — USER APPROVAL REQUIRED
+IMPLEMENTATION STATUS: IMPLEMENTED (FAZ 1)
+- İlk migration: drizzle/0000_init_core_schema.sql (yalnızca CREATE + FK)
+- Seed: 8 kategori, site ayarları, ilk SUPER_ADMIN, 4 örnek etkinlik, 6 galeri görseli
+- Doğrulama: migration uygulandı, seed çalıştı, build/lint/typecheck başarılı,
+  admin akışları (login/CRUD/logout) ve yetkisiz erişim testleri geçti
 ```
